@@ -1,0 +1,28 @@
+$kind: http-request
+description: ""
+url: http://127.0.0.1:8000/api/opportunities/7
+method: DELETE
+body:
+  type: json
+  content: "{\r
+
+    \  \"research_title\": \"Federated Learning for Privacy-Preserving Healthcare\",\r
+
+    \  \"research_description\": \"Training ML models across hospitals without sharing raw patient data.\",\r
+
+    \  \"research_area\": \"Artificial Intelligence\",\r
+
+    \  \"faculty_name\": \"Dr. Hina Farooq\",\r
+
+    \  \"department\": \"Computer Science\",\r
+
+    \  \"required_skills\": \"Python, PyTorch, Statistics\",\r
+
+    \  \"available_positions\": 2,\r
+
+    \  \"application_deadline\": \"2026-11-20\",\r
+
+    \  \"status\": \"Open\"\r
+
+    }\r\n"
+order: 1791743625741
