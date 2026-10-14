@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "Research Opportunity Portal",
+    "_postman_id": "5b36e6f4-3f49-4ec9-9a0b-research-portal",
+    "description": "CRUD and validation requests for the University Research Opportunity Portal.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000" },
+    { "key": "opportunityId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Create opportunity 1",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"AI for Healthcare Diagnostics\",\n  \"research_description\": \"Study machine learning methods for medical image analysis.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning\",\n  \"available_positions\": 3,\n  \"application_deadline\": \"2026-12-15\",\n  \"status\": \"Open\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities"
+      },
+      "event": [{ "listen": "test", "script": { "exec": ["if (pm.response.code === 201) { pm.collectionVariables.set('opportunityId', pm.response.json().id); }"] } }]
+    },
+    {
+      "name": "Create opportunity 2",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"Smart Agriculture Sensors\",\n  \"research_description\": \"Build low-cost sensors for crop monitoring.\",\n  \"research_area\": \"Internet of Things\",\n  \"faculty_name\": \"Dr. Ahmed Ali\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"Embedded systems, C++\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2026-11-30\",\n  \"status\": \"Open\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities"
+      }
+    },
+    {
+      "name": "Create opportunity 3",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"Secure Campus Networks\",\n  \"research_description\": \"Investigate practical network monitoring techniques.\",\n  \"research_area\": \"Cybersecurity\",\n  \"faculty_name\": \"Dr. Hamza Malik\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Networking, Linux\",\n  \"available_positions\": 4,\n  \"application_deadline\": \"2027-01-10\",\n  \"status\": \"Open\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities"
+      }
+    },
+    { "name": "Get all opportunities", "request": { "method": "GET", "url": "{{baseUrl}}/api/opportunities" } },
+    { "name": "Get one opportunity", "request": { "method": "GET", "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}" } },
+    {
+      "name": "Update opportunity",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"AI for Healthcare Diagnostics - Updated\",\n  \"research_description\": \"Study machine learning methods for medical image analysis.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning, PyTorch\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2026-12-20\",\n  \"status\": \"Open\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"
+      }
+    },
+    {
+      "name": "Close opportunity",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"AI for Healthcare Diagnostics - Updated\",\n  \"research_description\": \"Study machine learning methods for medical image analysis.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Sara Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, machine learning, PyTorch\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2026-12-20\",\n  \"status\": \"Closed\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}"
+      }
+    },
+    { "name": "Delete opportunity", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}" } },
+    { "name": "Get deleted opportunity (404)", "request": { "method": "GET", "url": "{{baseUrl}}/api/opportunities/{{opportunityId}}" } },
+    {
+      "name": "Invalid request (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"research_title\": \"Missing required fields\"\n}" },
+        "url": "{{baseUrl}}/api/opportunities"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+$kind: http-request
+description: ""
+url: http://127.0.0.1:8000/api/opportunities
+method: GET
+order: 1791743622741
